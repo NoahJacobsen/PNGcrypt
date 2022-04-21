@@ -3,8 +3,10 @@ import png
 import math
 import shutil
 
+verb = False
+
 def get_args():
-    desc = "A program"  #TODO
+    desc = "A cryptographic project using a visual medium to hide messages in plain sight"
     parser = argparse.ArgumentParser(
         description=desc
     )
@@ -66,7 +68,19 @@ def get_args():
 #-----------------
 def verbose(msg, end="\n"):
 	# Put a conditional here: User can initiate verbose with a -v/--verbose switch
-	print(msg, end=end)
+    global verb
+    if verb:
+        print(msg, end=end)
+#-----------------
+#   THROW_ERR
+#   takes: string that represents error message, int error code (default 1)
+#   returns:
+#   does: Prints message, exits program with error code
+#   supports: multiple
+#-----------------
+def throw_err(msg, code=1):
+	print(">>ERR>> " + msg)
+	exit(code)
 #-----------------
 #   TO_DEC
 #   takes: a string representing a binary number; i.e '0b1000101' (must have '0b' prefix)
@@ -95,8 +109,22 @@ def to_dec(s_bin):
 #-----------------
 def main():
     args = get_args()
+    if(args.verbose):
+        global verb
+        verb = True
     verbose(args)
     if(args.encrypt and args.decrypt):
-        print("Cannot")
+        throw_err("Cannot use both modes.")
+    if(not args.encrypt and not args.decrypt):
+        throw_err("Must select a mode; please include either -D or -E flag.")
+    if(args.decrypt):
+        run_decrypt()
+    if(args.encrypt):
+        run_encrypt()
+
+def run_decrypt():
+    verbose("Entering decrypt mode...")
+def run_encrypt():
+    verbose("Entering encrypt mode...")
 if __name__ == "__main__":
     main()
