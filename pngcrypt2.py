@@ -40,6 +40,22 @@ def get_args():
         default="",
         help="write to file OUT instead of default behaviour"
     )
+    '''
+    parser.add_argument(
+        '-p',
+        '--password-path',
+        type=str,
+        default="",
+        help="point to file that conatins password instead of inputting upon prompt"
+    )
+    parser.add_argument(
+        '-m',
+        '--message-path',
+        type=str,
+        default="",
+        help="point to file that conatins message instead of inputting upon prompt"
+    )
+    '''
     return parser.parse_args()
 #-----------------
 #   VERBOSE

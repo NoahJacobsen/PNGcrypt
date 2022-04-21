@@ -13,7 +13,7 @@ The idea is somewhat simple: with `pypng`, one can read the lines of pixels in a
 There are plenty of features I want to implement in the future. This is a short list of what's on the horizon:
 - Refactor for less user input, implementing the `argparse` library
 - Seed a password into a pixel selection algorithm that lets sender and recipient have exclusive access to the message
-- Add `--message []`, `--message-file []`, `--password []`, and `--password-file []` arguments
+- Add `--message-path []` and `--password-path []` arguments
 
 
 ## DISCLAIMER
